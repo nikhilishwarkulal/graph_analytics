@@ -1,7 +1,7 @@
 library analytics;
 
 import 'package:flutter/foundation.dart';
-import 'package:graph_analytics/AppApplication.dart';
+import 'package:graph_analytics/app_application.dart';
 import 'package:http/http.dart';
 
 class GraphAnalytics {
