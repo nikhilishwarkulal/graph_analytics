@@ -11,29 +11,73 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
+Onscreen Ui Debugger enables user to log on or print on screens
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Onscreen Ui Debugger can  create logs on screen in few simple steps.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the package in pubspec.yaml and check below code.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+
+## Add below code to your MaterialApp.
+```dart
+builder: (context, child) {
+    return Stack(
+        children: [
+            child ?? Container(),
+            Overlay(
+                initialEntries: [
+                    OverlayEntry(
+                        builder: (context) => const DebugWidget(),
+                    ),
+                ],
+            ),
+        ],
+    );
+},
+```
+After adding the above code your **MaterialApp** should like this.
 
 ```dart
-const like = 'sample';
+MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+    ),
+    //----------Changes starts from here ----------
+    builder: (context, child) {
+        return Stack(
+            children: [
+                child ?? Container(),
+                Overlay(
+                    initialEntries: [
+                        OverlayEntry(
+                        builder: (context) => const DebugWidget(),
+                        ),
+                    ],
+                ),
+            ],
+        );
+    },
+    //----------Changes Ends here ----------
+    home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    )
+```
+
+## Below is the formate to log.
+```dart
+DebugLog debugLog = DebugLog(logTitle: "Login Rest Api", dateTime: DateTime.now());
+debugLog.logStrings.add(DebugLogString(logTitle: "Login Request", logsDescription: "{mobile:'9496699210'}"));
+debugLog.logStrings.add(DebugLogString(logTitle: "Response", logsDescription: '{message:'success'}'));
+debugLog.setAsBlue(); // Tile color
+DebugUtils.debugLogBloc.addDebugLog(debugLog);
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+For additional information contact us at nikhilishwar2@gmail.com. We welcome more contributors on this project. 
