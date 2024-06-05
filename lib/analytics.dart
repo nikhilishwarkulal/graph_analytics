@@ -19,7 +19,7 @@ class GraphAnalytics {
     };
 
     Response r = await post(
-      Uri.parse("http://192.168.0.146:3000/api/graph/authPorcess"),
+      Uri.parse("http://54.159.43.52:3001/api/graph/authPorcess"),
       body: body,
     );
     _cachedAppApplication = AppApplication.fromRawJson(r.body);
@@ -45,7 +45,7 @@ class GraphAnalytics {
     };
 
     post(
-      Uri.parse("http://192.168.0.146:3000/api/graph/log"),
+      Uri.parse("http://54.159.43.52:3001/api/graph/log"),
       body: body,
     );
   }
@@ -66,7 +66,7 @@ class GraphAnalytics {
     };
 
     post(
-      Uri.parse("http://192.168.0.146:3000/api/graph/log"),
+      Uri.parse("http://54.159.43.52:3001/api/graph/log"),
       body: body,
     );
   }
