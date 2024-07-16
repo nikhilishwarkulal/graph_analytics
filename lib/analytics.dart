@@ -18,11 +18,17 @@ class GraphAnalytics {
       'appAccessToken': appAccessToken,
     };
 
-    Response r = await post(
-      Uri.parse("http://54.159.43.52:3001/api/graph/authPorcess"),
-      body: body,
-    );
-    _cachedAppApplication = AppApplication.fromRawJson(r.body);
+    try {
+      Response r = await post(
+        Uri.parse("http://54.159.43.52:3001/api/graph/authPorcess"),
+        body: body,
+      );
+      _cachedAppApplication = AppApplication.fromRawJson(r.body);
+    } catch (err) {
+      if (kDebugMode) {
+        print("[GraphAnalytics] Error : $err");
+      }
+    }
   }
 
   static AppApplication? _cachedAppApplication;
@@ -37,17 +43,23 @@ class GraphAnalytics {
       }
       return;
     }
-    Map<String, String> body = {
-      'appCollectionId': _cachedAppApplication!.id!,
-      'type': "nav",
-      'from': from,
-      'to': to,
-    };
+    try {
+      Map<String, String> body = {
+        'appCollectionId': _cachedAppApplication!.id!,
+        'type': "nav",
+        'from': from,
+        'to': to,
+      };
 
-    post(
-      Uri.parse("http://54.159.43.52:3001/api/graph/log"),
-      body: body,
-    );
+      post(
+        Uri.parse("http://54.159.43.52:3001/api/graph/log"),
+        body: body,
+      );
+    } catch (err) {
+      if (kDebugMode) {
+        print("[GraphAnalytics] Error : $err");
+      }
+    }
   }
 
   static void logScreenInfo(
@@ -58,16 +70,22 @@ class GraphAnalytics {
       }
       return;
     }
-    Map<String, String> body = {
-      'appCollectionId': _cachedAppApplication!.id!,
-      'type': "child",
-      'from': screenName,
-      'to': methodName,
-    };
+    try {
+      Map<String, String> body = {
+        'appCollectionId': _cachedAppApplication!.id!,
+        'type': "child",
+        'from': screenName,
+        'to': methodName,
+      };
 
-    post(
-      Uri.parse("http://54.159.43.52:3001/api/graph/log"),
-      body: body,
-    );
+      post(
+        Uri.parse("http://54.159.43.52:3001/api/graph/log"),
+        body: body,
+      );
+    } catch (err) {
+      if (kDebugMode) {
+        print("[GraphAnalytics] Error : $err");
+      }
+    }
   }
 }
