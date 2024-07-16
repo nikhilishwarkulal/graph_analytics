@@ -5,3 +5,7 @@
 ## 0.0.2
 
 * TODO: Change Api Url.
+
+## 0.0.3
+
+* TODO: Added error handling.

@@ -11,10 +11,10 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-Onscreen Ui Debugger enables user to log on or print on screens
+Graph Analytics enables user to log navigator and methods
 ## Features
 
-Onscreen Ui Debugger can  create logs on screen in few simple steps.
+Graph Analytics enables user to log navigator and methods in few simple steps.
 
 ## Getting started
 
@@ -23,59 +23,28 @@ Add the package in pubspec.yaml and check below code.
 ## Usage
 
 
-## Add below code to your MaterialApp.
+## Add below code in your **main.dart**
 ```dart
-builder: (context, child) {
-    return Stack(
-        children: [
-            child ?? Container(),
-            Overlay(
-                initialEntries: [
-                    OverlayEntry(
-                        builder: (context) => const DebugWidget(),
-                    ),
-                ],
-            ),
-        ],
-    );
-},
-```
-After adding the above code your **MaterialApp** should like this.
-
-```dart
-MaterialApp(
-    title: 'Flutter Demo',
-    theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-    ),
-    //----------Changes starts from here ----------
-    builder: (context, child) {
-        return Stack(
-            children: [
-                child ?? Container(),
-                Overlay(
-                    initialEntries: [
-                        OverlayEntry(
-                        builder: (context) => const DebugWidget(),
-                        ),
-                    ],
-                ),
-            ],
-        );
-    },
-    //----------Changes Ends here ----------
-    home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    )
+await GraphAnalytics.init(
+    appCollectionId: "66614634-------491016ebc",
+    id: "66608f1c-------9e5c11be8",
+    accessToken:
+    "W5qdrn61WUpZ3c0K0---------7BOaL83VswHCtOqxih7tUHhuc9z4VduYlGxGX",
+    appAccessToken:
+    "e5MA5hW0XCUCeBe15fKAaKdQHL---------JTMA5z5ZqkvGZF7M0QEbyDuLJb",
+);
 ```
 
-## Below is the formate to log.
+
+## You can log the navigation.
 ```dart
-DebugLog debugLog = DebugLog(logTitle: "Login Rest Api", dateTime: DateTime.now());
-debugLog.logStrings.add(DebugLogString(logTitle: "Login Request", logsDescription: "{mobile:'9496699210'}"));
-debugLog.logStrings.add(DebugLogString(logTitle: "Response", logsDescription: '{message:'success'}'));
-debugLog.setAsBlue(); // Tile color
-DebugUtils.debugLogBloc.addDebugLog(debugLog);
+GraphAnalytics.logNavigation(from: "splashScreen",to: "homeScreen");
+```
+
+## You can log the method.
+```dart
+GraphAnalytics.logScreenInfo(screenName: "homeScreen", methodName: "buttonTapped");
+GraphAnalytics.logScreenInfo(screenName: "homeScreen", methodName: "searchTapped");
 ```
 
 ## Additional information
