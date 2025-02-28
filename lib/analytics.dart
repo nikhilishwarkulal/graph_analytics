@@ -20,7 +20,7 @@ class GraphAnalytics {
 
     try {
       Response r = await post(
-        Uri.parse("http://54.159.43.52:3001/api/graph/authPorcess"),
+        Uri.parse("https://analyticserver.pulsecode.in/api/graph/authPorcess"),
         body: body,
       );
       _cachedAppApplication = AppApplication.fromRawJson(r.body);
@@ -52,7 +52,7 @@ class GraphAnalytics {
       };
 
       post(
-        Uri.parse("http://54.159.43.52:3001/api/graph/log"),
+        Uri.parse("https://analyticserver.pulsecode.in/api/graph/log"),
         body: body,
       );
     } catch (err) {
@@ -79,7 +79,7 @@ class GraphAnalytics {
       };
 
       post(
-        Uri.parse("http://54.159.43.52:3001/api/graph/log"),
+        Uri.parse("https://analyticserver.pulsecode.in/api/graph/log"),
         body: body,
       );
     } catch (err) {

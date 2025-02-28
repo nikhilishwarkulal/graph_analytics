@@ -9,3 +9,7 @@
 ## 0.0.3
 
 * TODO: Added error handling.
+
+## 0.0.4
+
+* TODO: Server Updated.
