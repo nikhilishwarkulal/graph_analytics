@@ -10,6 +10,6 @@
 
 * TODO: Added error handling.
 
-## 0.0.4
+## 1.0.0
 
 * TODO: Server Updated.
