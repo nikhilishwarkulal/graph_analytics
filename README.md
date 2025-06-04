@@ -11,19 +11,32 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-Graph Analytics enables user to log navigator and methods
-## Features
+# Graph Analytics
 
-Graph Analytics enables user to log navigator and methods in few simple steps.
+**Graph Analytics** helps you effortlessly log screen navigations and method-level interactions within your Flutter app.
 
-## Getting started
+---
 
-Add the package in pubspec.yaml and check below code.
+## ✨ Features
+
+- Log user navigation between screens.
+- Track method-level events within a screen (e.g., button taps, interactions).
+- Easily integrate with just a few lines of code.
+
+---
+
+## 🚀 Getting Started
+
+- Add this package to your `pubspec.yaml`.
+- Follow the setup instructions below.
+
+---
 
 ## Usage
 
 
 ## Add below code in your **main.dart**
+To get your appCollectionId,id,accessToken,appAccessToken Visit https://analytics.pulsecode.in, and register.
 ```dart
 await GraphAnalytics.init(
     appCollectionId: "66614634-------491016ebc",
@@ -37,16 +50,28 @@ await GraphAnalytics.init(
 
 
 ## You can log the navigation.
+To log navigation, provide both the from and to screen names.
+
+For example, if you're navigating from the login screen to the home screen on a button tap, place the logging code just before **Navigator.push()**
 ```dart
 GraphAnalytics.logNavigation(from: "splashScreen",to: "homeScreen");
 ```
 
 ## You can log the method.
+You can track specific user interactions within a screen, such as button taps, text input, etc. Ensure that the screenName used here matches the one provided in logNavigation. Note: If the screen name is not logged using logNavigation, interaction tracking will not function.
+
+Note: The screen name below should be as part of the logNavigation above
+
 ```dart
 GraphAnalytics.logScreenInfo(screenName: "homeScreen", methodName: "buttonTapped");
 GraphAnalytics.logScreenInfo(screenName: "homeScreen", methodName: "searchTapped");
 ```
 
+Example use cases:
+
+- OTP screen: `resendTapped`, `wrongOtpEntered`
+- Profile screen: `termsClicked`, `logoutTapped`
+
 ## Additional information
 
-For additional information contact us at nikhilishwar2@gmail.com. We welcome more contributors on this project. 
+For additional information contact us at pulsecode.tech@gmail.com. We welcome more contributors on this project. 

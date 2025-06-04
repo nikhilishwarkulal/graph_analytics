@@ -13,3 +13,7 @@
 ## 1.0.0
 
 * TODO: Server Updated.
+
+## 1.1.0
+
+* TODO: Fixed issue in gateway.

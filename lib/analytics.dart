@@ -5,11 +5,14 @@ import 'package:graph_analytics/app_application.dart';
 import 'package:http/http.dart';
 
 class GraphAnalytics {
+  /// [id],[appCollectionId],[accessToken],[appAccessToken] you will get it when you download the
+  /// also default timeout to initialise is 3 seconds you can set the timeout,
   static Future<void> init({
     required String appCollectionId,
     required String id,
     required String accessToken,
     required String appAccessToken,
+    int timeOut = 3,
   }) async {
     Map<String, String> body = {
       'id': id,
@@ -20,9 +23,10 @@ class GraphAnalytics {
 
     try {
       Response r = await post(
-        Uri.parse("https://analyticserver.pulsecode.in/api/graph/authPorcess"),
+        Uri.parse("https://analytics.pulsecode.in/api/graph/authPorcess"),
         body: body,
-      );
+      ).timeout(Duration(seconds: timeOut));
+      print(r.body);
       _cachedAppApplication = AppApplication.fromRawJson(r.body);
     } catch (err) {
       if (kDebugMode) {
@@ -52,7 +56,7 @@ class GraphAnalytics {
       };
 
       post(
-        Uri.parse("https://analyticserver.pulsecode.in/api/graph/log"),
+        Uri.parse("https://analytics.pulsecode.in/api/graph/log"),
         body: body,
       );
     } catch (err) {
@@ -79,7 +83,7 @@ class GraphAnalytics {
       };
 
       post(
-        Uri.parse("https://analyticserver.pulsecode.in/api/graph/log"),
+        Uri.parse("https://analytics.pulsecode.in/api/graph/log"),
         body: body,
       );
     } catch (err) {
